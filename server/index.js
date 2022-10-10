@@ -5,15 +5,38 @@ const passportSetup = require("./passport");
 const passport = require("passport");
 const authRoute = require("./routes/auth");
 const clinicalRoute = require("./routes/clinical");
+const mongoose = require("mongoose");
+const passportLocal = require("passport-local");
+const cookieParser = require("cookie-parser");
+const bcrypt = require("bcryptjs");
+const session = require("express-session");
+const bodyParser = require("body-parser");
+const user = require("./user");
+
 const app = express();
 
+// database connection
+const uri =
+  "mongodb+srv://ibitayo:h7cpbjMI170RBLja@ibitayodb.pmpom44.mongodb.net/?retryWrites=true&w=majority";
+mongoose.connect(
+  uri,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
+  () => {
+    console.log("Mongoose is connected");
+  }
+);
+
+// middleware
 app.use(
   cookieSession({ name: "session", keys: ["lama"], maxAge: 24 * 60 * 60 * 100 })
 );
-
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(passport.initialize());
 app.use(passport.session());
-
 app.use(
   cors({
     origin: "http://localhost:3000",
@@ -21,6 +44,17 @@ app.use(
     credentials: true,
   })
 );
+app.use(
+  session({
+    secret: "secretcode",
+    resave: true,
+    saveUninitialized: true,
+  })
+);
+app.use(cookieParser("secretcode"));
+app.use(passport.initialize());
+app.use(passport.session());
+require("./passportConfig")(passport);
 
 app.use("/auth", authRoute);
 

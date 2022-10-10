@@ -1,7 +1,10 @@
 const router = require("express").Router();
 const passport = require("passport");
+const bcrypt = require("bcryptjs");
+const User = require("../user");
 
-const CLIENT_URL = "http://localhost:3000/";
+const CLIENT_URL = "http://localhost:3000/home";
+const CLIENT_URL_OUT = "http://localhost:3000/login";
 
 router.get("/login/success", (req, res) => {
   if (req.user) {
@@ -23,18 +26,8 @@ router.get("/login/failed", (req, res) => {
 
 router.get("/logout", (req, res) => {
   req.logout();
-  res.redirect(CLIENT_URL);
+  res.redirect(CLIENT_URL_OUT);
 });
-
-router.get("/google", passport.authenticate("google", { scope: ["profile"] }));
-
-router.get(
-  "/google/callback",
-  passport.authenticate("google", {
-    successRedirect: CLIENT_URL,
-    failureRedirect: "/login/failed",
-  })
-);
 
 router.get("/github", passport.authenticate("github", { scope: ["profile"] }));
 
@@ -46,17 +39,36 @@ router.get(
   })
 );
 
-router.get(
-  "/facebook",
-  passport.authenticate("facebook", { scope: ["profile"] })
-);
-
-router.get(
-  "/facebook/callback",
-  passport.authenticate("facebook", {
-    successRedirect: CLIENT_URL,
-    failureRedirect: "/login/failed",
-  })
-);
+// routes
+router.post("/login", (req, res, next) => {
+  passport.authenticate("local", (err, user, info) => {
+    // use local strategy to authenticate user
+    if (err) throw err;
+    if (!user) res.send("No user exists");
+    else {
+      req.logIn(user, (err) => {
+        if (err) throw err;
+        res.send(user);
+      });
+    }
+  })(req, res, next);
+});
+router.post("/register", (req, res) => {
+  User.findOne({ username: req.body.username }, async (err, doc) => {
+    if (err) throw err;
+    if (doc) {
+      res.send("User already exists");
+    } else {
+      const hashPassword = await bcrypt.hash(req.body.password, 10);
+      const newUser = new User({
+        username: req.body.username,
+        password: hashPassword,
+      });
+      await newUser.save();
+      res.send("User Created");
+    }
+  });
+  console.log(req.body);
+});
 
 module.exports = router;

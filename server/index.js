@@ -16,8 +16,7 @@ const user = require("./user");
 const app = express();
 
 // database connection
-const uri =
-  "mongodb+srv://ibitayo:h7cpbjMI170RBLja@ibitayodb.pmpom44.mongodb.net/?retryWrites=true&w=majority";
+const uri = `mongodb+srv://ibitayo:${process.env.MONGO_DB_PASSWORD}@ibitayodb.pmpom44.mongodb.net/?retryWrites=true&w=majority`;
 mongoose.connect(
   uri,
   {

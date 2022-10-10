@@ -1,11 +1,12 @@
 const GithubStrategy = require("passport-github2").Strategy;
 const passport = require("passport");
+require("dotenv").config();
 
 passport.use(
   new GithubStrategy(
     {
-      clientID: "13524c98b3435e64078d",
-      clientSecret: "dda6e42895e000c5cc1fb146bd324cc28d2f31ad",
+      clientID: process.env.GITHUB_CLIENT_ID,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET,
       callbackURL: "/auth/github/callback",
     },
     function (accessToken, refreshToken, profile, done) {

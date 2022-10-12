@@ -4,7 +4,7 @@ import "./Navbar.css";
 
 const Navbar = (props) => {
   const auth = useAuth();
-  console.log(auth);
+
   const logout = () => {
     window.open("http://localhost:3001/auth/logout", "_self");
   };
@@ -12,7 +12,7 @@ const Navbar = (props) => {
     <div className="navbar">
       <span className="logo">
         <Link className="link" to="/home">
-          Simple drug assistant
+          Drugs for Dummies
         </Link>
       </span>
       {auth.user ? (
@@ -32,9 +32,14 @@ const Navbar = (props) => {
           </li>
         </ul>
       ) : (
-        <Link className="link" to="login">
-          Login
-        </Link>
+        <>
+          <Link className="link" to="login">
+            Login
+          </Link>
+          <Link className="link" to="about">
+            About
+          </Link>
+        </>
       )}
     </div>
   );

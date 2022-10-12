@@ -1,3 +1,6 @@
+* {
+  font-family: "Quicksand", sans-serif;
+}
 .loader {
   position: absolute;
   top: calc(50% - 4em);

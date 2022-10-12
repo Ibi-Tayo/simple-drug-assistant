@@ -1,0 +1,8 @@
+.info {
+    height: calc(100vh - 50px);
+    display: flex;
+    padding: 50px 100px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    background-color: #256D85;
+}

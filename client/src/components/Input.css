@@ -1,0 +1,20 @@
+.inputContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.search-query {
+    background-color: #DFF6FF;
+border: 2px solid #06283D;
+border-radius: 2.5rem;
+font-size: medium;
+color: #282c34;
+margin-right: 20px;
+}
+
+.search-button {
+    border: none;
+    background-color: #00000000;
+    cursor: pointer;
+}

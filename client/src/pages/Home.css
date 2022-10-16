@@ -1,7 +1,49 @@
-.home {
-  height: calc(100vh - 50px);
+
+/* The hero image */
+.hero-image {
+    /* Use "linear-gradient" to add a darken background effect to the image. This will make the text easier to read */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("../img/hero1.jpg");
+  
+    /* Set a specific height */
+    height: calc(100vh - 50px);
+  
+    /* Position and center the image to scale nicely on all screens */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  }
+  
+  /* Place text in the middle of the image */
+  .hero-text {
     text-align: center;
-    padding: 50px 100px;
-    margin: auto;
-    background-color: #256D85;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+  }
+
+  .action-button {
+    height: 50px;
+    width: 100px;
+    color: black;
+    background-color: white;
+    border: none;
+    border-radius: 2.5rem;
+    margin: 2%;
+    cursor: pointer;
+  }
+
+  .action-button:hover {
+    height: 50px;
+    width: 100px;
+    color: black;
+    background-color: white;
+    border: none;
+    border-radius: 2.5rem;
+    margin: 2%;
+    cursor: pointer;
+    transform: scale(1.2);
+    transition: 1000ms;
   }

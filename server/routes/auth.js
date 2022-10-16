@@ -3,7 +3,7 @@ const passport = require("passport");
 const bcrypt = require("bcryptjs");
 const User = require("../user");
 
-const CLIENT_URL = "http://localhost:3000/home";
+const CLIENT_URL = "http://localhost:3000/";
 const CLIENT_URL_OUT = "http://localhost:3000/login";
 
 router.get("/login/success", (req, res) => {

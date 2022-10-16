@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import "./Navbar.css";
+import SearchIcon from "@mui/icons-material/Search";
+import LoginIcon from "@mui/icons-material/Login";
+import LogoutIcon from "@mui/icons-material/Logout";
+import InfoIcon from "@mui/icons-material/Info";
+import AccountBoxIcon from "@mui/icons-material/AccountBox";
 
 const Navbar = (props) => {
   const auth = useAuth();
@@ -11,10 +16,20 @@ const Navbar = (props) => {
   return (
     <div className="navbar">
       <span className="logo">
-        <Link className="link" to="/home">
-          Drugs for Dummies
-        </Link>
+        {auth.user ? (
+          <Link className="link" to="/search">
+            DFD.
+          </Link>
+        ) : (
+          <Link className="link" to="/">
+            DFD.
+          </Link>
+        )}
       </span>
+      {/* REMEMBER TO ADD THIS BACK WHEN SECURING SEARCH PAGE */}
+      {/* <Link className="link" to="search">
+        Search <SearchIcon />
+      </Link> */}
       {auth.user ? (
         <ul className="list">
           <li className="listItem">
@@ -26,21 +41,25 @@ const Navbar = (props) => {
           </li>
           <li className="listItem">
             {auth.user.displayName ? auth.user.displayName : auth.user.username}
+            <AccountBoxIcon />
           </li>
           <li className="listItem" onClick={logout}>
-            Logout
+            Logout <LogoutIcon />
           </li>
         </ul>
       ) : (
         <>
-          <Link className="link" to="login">
-            Login
+          <Link className="link" to="search">
+            Search <SearchIcon />
           </Link>
-          <Link className="link" to="about">
-            About
+          <Link className="link" to="login">
+            Login <LoginIcon />
           </Link>
         </>
       )}
+      <Link className="link" to="about">
+        About <InfoIcon />
+      </Link>
     </div>
   );
 };

@@ -1,5 +1,11 @@
 * {
-  font-family: "Quicksand", sans-serif;
+  font-family: 'DM Sans', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.main-container {
+  position: relative;
 }
 .loader {
   position: absolute;
@@ -28,19 +34,3 @@
 }
 
 
-/* .card {
-  transition-duration: 150ms;
-transition-timing-function: ease-in-out;
-transition-delay: 0s;
-transition-property: border, box-shadow;
-border-radius: 24px;
-font-family: "Euclid Circular A", Akzidenz, "Helvetica Neue", Helvetica, Arial, sans-serif;
-font-size: 13px;
-line-height: 20px;
-padding: 24px;
-min-height: 68px;
-border: 1px solid rgb(232, 237, 235);
-box-shadow: rgba(0, 30, 43, 0.3) 0px 4px 10px -4px;
-background-color: rgb(255, 255, 255);
-color: rgb(28, 45, 56);
-} */

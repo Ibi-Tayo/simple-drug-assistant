@@ -56,6 +56,7 @@ app.use(passport.session());
 require("./passportConfig")(passport);
 
 app.use("/auth", authRoute);
+app.use("/clinical", clinicalRoute);
 
 app.listen("3001", () => {
   console.log("Server is running!");

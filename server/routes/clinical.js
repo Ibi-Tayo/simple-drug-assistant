@@ -1,5 +1,4 @@
-const express = require("express");
-const router = express.Router();
+const router = require("express").Router();
 const axios = require("axios");
 
 // const configNhs = {
@@ -10,7 +9,7 @@ const axios = require("axios");
 
 const fdaAPIkey = "K080rucVHqBPW8fkFhZn4z7VzThh1VtQo6BIpc9X";
 
-const drug = "digoxin"; // edit this variable for testing
+const drug = "melatonin"; // edit this variable for testing
 
 // const url = `https://api.nhs.uk/medicines/${drug}/`;
 const fdaUrl = `https://api.fda.gov/drug/ndc.json?api_key=${fdaAPIkey}&search=finished:true+AND+generic_name:${drug}&limit=1`;
@@ -39,10 +38,12 @@ const drugInformation = {
   drugClass: "",
   drugSummary: "",
   sideEffects: "",
+  MOA: "",
 };
 
 // get drug info from medline and fda and use this to update drugInfo object
-router.get("/", async function (req, res, next) {
+router.post("/", async function (req, res, next) {
+  const drugQuery = req.body.drugQuery;
   const data1 = await getMedlineInfo();
   const data2 = await getFdaInfo();
 
@@ -58,7 +59,7 @@ router.get("/", async function (req, res, next) {
     drugInformation.drugClass = fdaEPC;
   }
 
-  // res.send();
+  res.send(drugInformation);
   console.log(drugInformation);
 });
 

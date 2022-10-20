@@ -4,6 +4,8 @@ import { useState } from "react";
 import axios from "axios";
 import { useAuth } from "../hooks/useAuth";
 import "./Login.css";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
 const Login = () => {
   const github = () => {
@@ -17,6 +19,8 @@ const Login = () => {
 
   const [loginUsername, setloginUsername] = useState("");
   const [loginPassword, setloginPassword] = useState("");
+  const [visible, setVisible] = useState(false);
+  const [noUser, setNoUser] = useState(false);
   const auth = useAuth();
 
   function login() {
@@ -28,12 +32,10 @@ const Login = () => {
       },
       withCredentials: true,
       url: "http://localhost:3001/auth/login",
-    }).then((res) =>
-      res.data.username ? refreshPage() : console.log(res.data)
-    );
+    }).then((res) => (res.data.username ? refreshPage() : setNoUser(true)));
   }
 
-  if (auth.user) return <Navigate to="/home" />;
+  if (auth.user) return <Navigate to="/" />;
   return (
     <div className="login">
       {/* AUTHENTICATION WITH GITHUB *WORKING* */}
@@ -55,8 +57,18 @@ const Login = () => {
             placeholder="Username"
             onChange={(e) => setloginUsername(e.target.value)}
           />
+          <div
+            className="icon2"
+            onClick={() => {
+              visible ? setVisible(false) : setVisible(true);
+            }}
+          >
+            {visible ? <VisibilityIcon /> : <VisibilityOffIcon />}
+          </div>
+
           <input
-            type="text"
+            className="input"
+            type={visible ? "text" : "password"}
             placeholder="Password"
             onChange={(e) => setloginPassword(e.target.value)}
           />
@@ -68,6 +80,9 @@ const Login = () => {
           >
             Login
           </button>
+          {noUser ? (
+            <h5 style={{ color: "red" }}>User does not exist</h5>
+          ) : null}
           <Link to="/register">No account? Register here </Link>
         </div>
       </div>

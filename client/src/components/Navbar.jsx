@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import "./Navbar.css";
 import SearchIcon from "@mui/icons-material/Search";
@@ -6,15 +6,31 @@ import LoginIcon from "@mui/icons-material/Login";
 import LogoutIcon from "@mui/icons-material/Logout";
 import InfoIcon from "@mui/icons-material/Info";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
+import { useEffect, useState } from "react";
 
 const Navbar = (props) => {
   const auth = useAuth();
+  const location = useLocation();
+  const [navBg, setNavBg] = useState("white");
+  useEffect(() => {
+    if (window.location.pathname === "/login") {
+      setNavBg("black");
+    } else {
+      setNavBg("white");
+    }
+  }, [location]);
 
   const logout = () => {
     window.open("http://localhost:3001/auth/logout", "_self");
   };
   return (
-    <div className="navbar">
+    <div
+      className="navbar"
+      style={{
+        backgroundColor: navBg,
+        color: navBg === "white" ? "black" : "white",
+      }}
+    >
       <span className="logo">
         {auth.user ? (
           <Link className="link" to="/search">

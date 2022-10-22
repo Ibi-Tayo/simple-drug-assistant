@@ -5,27 +5,24 @@ import SearchIcon from "@mui/icons-material/Search";
 
 export default function Input() {
   const [userInput, setUserInput] = useState("");
+  // const [data, setData] = useState({});
   let navigate = useNavigate();
   const handleClick = () => {
     const updateDrugInfo = async () => {
       try {
-        const response = await fetch("http://localhost:3001/clinical", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            drugQuery: userInput,
-          }),
-        });
-        const data = await response.json(); //
-        console.log(data);
+        const response = await fetch(
+          "http://localhost:3001/clinical/?" +
+            new URLSearchParams({
+              drugQuery: userInput,
+            })
+        );
+        const dataRes = await response.json();
+        navigate("/info", { state: dataRes }); // send response to info component
       } catch (error) {
         console.log(error);
       }
     };
     updateDrugInfo();
-    navigate("/info");
     // where the drug info will be
   };
   return (

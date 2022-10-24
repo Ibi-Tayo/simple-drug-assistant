@@ -28,8 +28,9 @@ export default function Register() {
     }
   }
   return (
-    <div className="login">
+    <div className="register">
       <div className="right">
+        <h1 className="register-title">Register.</h1>
         <input
           type="text"
           placeholder="Username"

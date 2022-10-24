@@ -4,6 +4,30 @@
     align-items: center;
     justify-content: center;
   }
+
+  .login-title {
+    color: #222831;
+    font-family: 'DM Sans', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+    font-size: 30px;
+  }
+
+  .register {
+    height: calc(100vh - 50px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #222831;
+  }
+
+  .register-title {
+    color: #EEEEEE;
+    font-family: 'DM Sans', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+    font-size: 30px;
+  }
   
   .wrapper {
     width: 60%;

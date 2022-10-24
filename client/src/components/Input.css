@@ -1,8 +1,8 @@
-.inputContainer {
+/*  */
+.inputWrapper {
     display: flex;
     align-items: center;
     justify-content: center;
-    
 }
 .search-query {
     background-color: #DFF6FF;
@@ -17,4 +17,14 @@ margin-right: 20px;
     border: none;
     background-color: #00000000;
     cursor: pointer;
+}
+
+.searchIcon {
+    position: relative;
+    left: 225px;
+    bottom: 5px;
+}
+
+.notification {
+    color: #EEEEEE;
 }

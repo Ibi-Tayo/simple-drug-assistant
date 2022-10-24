@@ -48,10 +48,11 @@ const Login = () => {
         </div>
         <div className="center">
           <div className="line" />
-          <div className="or">OR</div>
+          <div className="or">OR </div>
         </div>
         {/* AUTHENTICATION WITH USERNAME/PASSWORD */}
         <div className="right">
+          <h1 className="login-title">Login.</h1>
           <input
             type="text"
             placeholder="Username"

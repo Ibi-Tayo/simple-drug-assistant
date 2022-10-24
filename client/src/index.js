@@ -4,9 +4,7 @@ import App from "./App";
 import { ProvideAuth } from "./hooks/useAuth";
 
 const loader = document.querySelector(".loader");
-
 const showLoader = () => loader.classList.remove("loader--hide");
-
 const hideLoader = () => loader.classList.add("loader--hide");
 
 ReactDOM.render(

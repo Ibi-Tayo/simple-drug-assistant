@@ -1,4 +1,5 @@
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import "./app.css";
 import Search from "./pages/Search";
 import Login from "./pages/Login";
@@ -28,6 +29,7 @@ const App = ({ hideLoader }) => {
           <Route path="/search" element={auth ? <Search /> : null} />
           <Route path="/info" element={auth ? <Info /> : null} />
         </Routes>
+        <Footer />
       </div>
     </BrowserRouter>
   );

@@ -11,12 +11,12 @@ import { useEffect, useState } from "react";
 const Navbar = (props) => {
   const auth = useAuth();
   const location = useLocation();
-  const [navBg, setNavBg] = useState("white");
+  const [navBg, setNavBg] = useState("#EEEEEE");
   useEffect(() => {
     if (window.location.pathname === "/login") {
-      setNavBg("black");
+      setNavBg("#222831");
     } else {
-      setNavBg("white");
+      setNavBg("#EEEEEE");
     }
   }, [location]);
 
@@ -28,17 +28,17 @@ const Navbar = (props) => {
       className="navbar"
       style={{
         backgroundColor: navBg,
-        color: navBg === "white" ? "black" : "white",
+        color: navBg === "#EEEEEE" ? "#222831" : "#EEEEEE",
       }}
     >
       <span className="logo">
         {auth.user ? (
           <Link className="link" to="/search">
-            DFD.
+            MARC.
           </Link>
         ) : (
           <Link className="link" to="/">
-            DFD.
+            MARC.
           </Link>
         )}
       </span>

@@ -1,8 +1,8 @@
 .about {
     height: calc(100vh - 50px);
     text-align: center;
-    background-color: #256D85;
-    color: white;
+    background-color: #222831;
+    color: #EEEEEE;
 }
 
 h2 {

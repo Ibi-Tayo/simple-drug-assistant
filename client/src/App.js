@@ -12,27 +12,30 @@ import Info from "./pages/Info";
 import Home from "./pages/Home";
 
 const App = ({ hideLoader }) => {
-  useEffect(hideLoader, [hideLoader]);
-  const auth = useAuth();
+    useEffect(hideLoader, [hideLoader]);
+    const auth = useAuth();
 
-  return (
-    <BrowserRouter>
-      <div className="main-container">
-        <Navbar />
-        <Routes>
-          {/* GLOBAL ROUTES */}
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/about" element={<About />} />
-          {/* PRIVATE ROUTES: change back to auth.user once ready to properly secure routes, i need to easily see these routes without auth for now */}
-          <Route path="/search" element={auth ? <Search /> : null} />
-          <Route path="/info" element={auth ? <Info /> : null} />
-        </Routes>
-        <Footer />
-      </div>
-    </BrowserRouter>
-  );
+    return (
+        <BrowserRouter>
+            <div className="main-container">
+                <Navbar />
+                <Routes>
+                    {/* GLOBAL ROUTES */}
+                    <Route path="/" element={<Home />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<Register />} />
+                    <Route path="/about" element={<About />} />
+                    {/* PRIVATE ROUTES: change back to auth.user once ready to properly secure routes, i need to easily see these routes without auth for now */}
+                    <Route
+                        path="/search"
+                        element={auth.user ? <Search /> : null}
+                    />
+                    <Route path="/info" element={auth.user ? <Info /> : null} />
+                </Routes>
+                <Footer />
+            </div>
+        </BrowserRouter>
+    );
 };
 
 export default App;

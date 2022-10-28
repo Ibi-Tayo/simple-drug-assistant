@@ -21,7 +21,7 @@ const Navbar = (props) => {
     }, [location]);
 
     const logout = () => {
-        window.open("http://localhost:3001/auth/logout", "_self");
+        window.open("https://api-marc.herokuapp.com/auth/logout", "_self");
     };
     return (
         <div

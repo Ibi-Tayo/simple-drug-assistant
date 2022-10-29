@@ -34,6 +34,13 @@ connectDatabase();
 
 // middleware
 app.use(
+    cors({
+        origin: "http://localhost:3000",
+        methods: "GET,POST,PUT,DELETE",
+        credentials: true,
+    })
+);
+app.use(
     cookieSession({
         name: "session",
         keys: ["lama"],
@@ -44,13 +51,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(
-    cors({
-        origin: "http://localhost:3000",
-        methods: "GET,POST,PUT,DELETE",
-        credentials: true,
-    })
-);
 app.use(
     session({
         secret: "secretcode",

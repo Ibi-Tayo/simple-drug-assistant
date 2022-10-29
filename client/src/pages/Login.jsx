@@ -9,7 +9,7 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
 const Login = () => {
     const github = () => {
-        window.open("https://api-marc.herokuapp.com/auth/github", "_self");
+        window.open("http://localhost:3001/auth/github", "_self");
     };
     const refreshPage = () => {
         window.location.reload();
@@ -31,7 +31,7 @@ const Login = () => {
                 password: loginPassword,
             },
             withCredentials: true,
-            url: "https://api-marc.herokuapp.com/auth/login",
+            url: "http://localhost:3001/auth/login",
         }).then((res) => (res.data.username ? refreshPage() : setNoUser(true)));
     }
 
@@ -82,7 +82,9 @@ const Login = () => {
                         Login
                     </button>
                     {noUser ? (
-                        <h5 style={{ color: "red" }}>User does not exist</h5>
+                        <h5 style={{ color: "red" }}>
+                            User does not exist or password incorrect
+                        </h5>
                     ) : null}
                     <Link to="/register">No account? Register here </Link>
                 </div>

@@ -12,6 +12,7 @@ const bcrypt = require("bcryptjs");
 const session = require("express-session");
 const bodyParser = require("body-parser");
 const user = require("./user");
+const path = require("path");
 
 const app = express();
 

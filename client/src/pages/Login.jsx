@@ -15,8 +15,6 @@ const Login = () => {
         window.location.reload();
     };
 
-    // The basic functionality is there but there are no error messages etc..
-
     const [loginUsername, setloginUsername] = useState("");
     const [loginPassword, setloginPassword] = useState("");
     const [visible, setVisible] = useState(false);

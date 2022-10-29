@@ -16,6 +16,13 @@ const path = require("path");
 
 const app = express();
 
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static("client/build"));
+    app.get("*", (req, res) => {
+        res.sendFile(path.resolve(__dirname, "client/build", "index.html"));
+    });
+}
+
 // database connection
 const uri = `mongodb+srv://ibitayo:${process.env.MONGO_DB_PASSWORD}@ibitayodb.pmpom44.mongodb.net/?retryWrites=true&w=majority`;
 
@@ -66,13 +73,6 @@ require("./passportConfig")(passport);
 
 app.use("/auth", authRoute);
 app.use("/clinical", clinicalRoute);
-
-if (process.env.NODE_ENV === "production") {
-    app.use(express.static("client/build"));
-    app.get("*", (req, res) => {
-        req.sendFile(path.resolve(__dirname, "client/build", "index.html"));
-    });
-}
 
 app.listen(process.env.PORT || 3001, () => {
     console.log("Server is running!");

@@ -36,7 +36,7 @@ connectDatabase();
 // middleware
 app.use(
     cors({
-        origin: "https://simple-drug-assistant-marc.vercel.app",
+        origin: "http://localhost:3000",
         methods: "GET,POST,PUT,DELETE",
         credentials: true,
     })

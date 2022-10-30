@@ -36,15 +36,20 @@ connectDatabase();
 // middleware
 app.use(
     cors({
-        origin: "http://localhost:3000",
+        origin:
+            process.env.NODE_ENV === "production"
+                ? "https://simple-drug-assistant-marc.vercel.app"
+                : "http://localhost:3000",
         methods: "GET,POST,PUT,DELETE",
         credentials: true,
     })
 );
+app.set("trust proxy", 1);
 app.use(
     cookieSession({
         name: "session",
         keys: ["lama"],
+        httpOnly: true,
         maxAge: 24 * 60 * 60 * 100,
     })
 );

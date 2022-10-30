@@ -33,3 +33,6 @@ Open two terminals in your development environment:
 2. Terminal 2 (run the client):
     - `cd client`
     - `npm start`
+
+what the website looks like (not fully functioning) (deployed to vercel)
+https://simple-drug-assistant-marc.vercel.app

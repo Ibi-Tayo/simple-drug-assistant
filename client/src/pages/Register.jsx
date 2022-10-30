@@ -17,7 +17,7 @@ export default function Register() {
                     password: registerPassword,
                 },
                 withCredentials: true,
-                url: "http://localhost:3001/auth/register",
+                url: "https://api-marc.herokuapp.com/auth/register",
             }).then((res) => {
                 console.log(res);
                 setError(false);

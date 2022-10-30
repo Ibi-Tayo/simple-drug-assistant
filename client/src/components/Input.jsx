@@ -18,7 +18,7 @@ export default function Input() {
         const updateDrugInfo = async () => {
             try {
                 const response = await fetch(
-                    "http://localhost:3001/clinical/?" +
+                    "https://api-marc.herokuapp.com/clinical/?" +
                         new URLSearchParams({
                             drugQuery: userInput,
                         })

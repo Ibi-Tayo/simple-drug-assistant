@@ -9,7 +9,7 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
 const Login = () => {
     const github = () => {
-        window.open("http://localhost:3001/auth/github", "_self");
+        window.open("https://api-marc.herokuapp.com/auth/github", "_self");
     };
     const refreshPage = () => {
         window.location.reload();
@@ -29,7 +29,7 @@ const Login = () => {
                 password: loginPassword,
             },
             withCredentials: true,
-            url: "http://localhost:3001/auth/login",
+            url: "https://api-marc.herokuapp.com/auth/login",
         }).then((res) => (res.data.username ? refreshPage() : setNoUser(true)));
     }
 

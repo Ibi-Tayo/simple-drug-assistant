@@ -30,7 +30,7 @@ This can obviously get very very detailed such as requesting for the chemical st
 
 ## Demo
 
-Open two terminals in your development environment:
+Open two terminals:
 
 1. Terminal 1 (run the server):
     - `npm start`

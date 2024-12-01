@@ -30,13 +30,6 @@ This can obviously get very very detailed such as requesting for the chemical st
 
 ## Demo
 
-Open two terminals:
-
-1. Terminal 1 (run the server):
-    - `npm start`
-2. Terminal 2 (run the client):
-    - `cd client`
-    - `npm start`
 
 what the website looks like (not fully functioning) (deployed to vercel)
 https://simple-drug-assistant-marc-abqyt5owq-ibitayo95.vercel.app/
